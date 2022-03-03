@@ -7,6 +7,12 @@ body {
   font-family: "nanumsquare";
 }
 
+.modal {
+  margin-top: 20px;
+  padding: 20px;
+  background: #eee;
+}
+
 .black-nav {
   background: black;
   width: 100%;
@@ -18,6 +24,26 @@ body {
   box-sizing: border-box;
 }
 
+.publish {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.publish input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 80%;
+  border: 1px solid grey;
+}
+
+.publish button {
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+}
+
+/* base */
 .list {
   margin-top: 30px;
   text-align: left;
