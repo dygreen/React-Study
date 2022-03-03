@@ -171,6 +171,8 @@ function App() {
           inputChange(e.target.value);
         }}
       /> */}
+
+      <Profile />
     </div>
   );
 }
@@ -183,6 +185,28 @@ function Modal(props) {
       <p>상세내용</p>
     </div>
   );
+}
+
+// 예전 문법 : btn을 누르면 이름이 바뀌는
+class Profile extends React.Component {
+  constructor() {
+    super();
+    this.state = { name: "Kim", age: 30 };
+  }
+
+  changeName() {
+    this.setState({ name: "Park" });
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>프로필입니다</h3>
+        <p>저는 {this.state.name}입니다</p>
+        <button onClick={this.changeName.bind(this)}>버튼</button>
+      </div>
+    );
+  }
 }
 
 export default App;
