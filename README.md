@@ -4,3 +4,6 @@
   + Component 문법 / 삼항연산자를 통한 '모달창 스위치' 기능 / map 함수를 통해 글제목 갯수에 맞게 HTML 생성 및 출력
      / props 문법(컴포넌트간 자료 전달)을 통해 '제목을 누르면 new글의 제목이 해당 제목으로 바뀌는' 기능
      / input을 통해 '블로그 글발행' 기능 
+
+* (folder) shoppingMall_project
+  1) import / export를 사용해 상품 데이터 '데이터바인딩'
