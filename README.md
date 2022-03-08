@@ -7,3 +7,4 @@
 
 * (folder) shoppingMall_project
   1) import / export를 사용해 상품 데이터 '데이터바인딩'
+  2) Router) Link, Switch, History로 '페이지 구분' // useHistory, useParams로  '데이터바인딩'
