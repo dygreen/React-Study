@@ -8,3 +8,4 @@
 * (folder) shoppingMall_project
   1) import / export를 사용해 상품 데이터 '데이터바인딩'
   2) Router) Link, Switch, History로 '페이지 구분' // useHistory, useParams로  '데이터바인딩'
+  3) styled-components / SASS ) class없는 css 스타일링 및 css에서 여러 문법을 사용할 수 있는 SASS
