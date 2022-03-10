@@ -119,27 +119,27 @@ function App() {
         <Route path="/detail/:id">
           <Detail shoes={shoes} />
           {/* <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <img
-                src="https://codingapple1.github.io/shop/shoes1.jpg"
-                width="100%"
-              />
+            <div className="row">
+              <div className="col-md-6">
+                <img
+                  src="https://codingapple1.github.io/shop/shoes1.jpg"
+                  width="100%"
+                />
+              </div>
+              <div className="col-md-6 mt-4">
+                <h4 className="pt-5">상품명</h4>
+                <p>상품설명</p>
+                <p>120000원</p>
+                <button className="btn btn-danger">주문하기</button>
+              </div>
             </div>
-            <div className="col-md-6 mt-4">
-              <h4 className="pt-5">상품명</h4>
-              <p>상품설명</p>
-              <p>120000원</p>
-              <button className="btn btn-danger">주문하기</button>
-            </div>
-          </div>
-        </div> */}
+          </div> */}
         </Route>
-        {/* <Route path="/something" component={Card}></Route> */}
+        <Route path="/something" component={Card}></Route>
 
-        <Route path="/:id">
+        {/* <Route path="/:id">
           <div>아무거나 적었을 때 보여주세요</div>
-        </Route>
+        </Route> */}
       </Switch>
     </div>
   );

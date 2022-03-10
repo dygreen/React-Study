@@ -1,6 +1,18 @@
 import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import styled from "styled-components";
 import "./App.css";
+import "./Detail.scss";
+
+// styled-components
+let 박스 = styled.div`
+  padding: 20px;
+`;
+
+let 제목 = styled.h4`
+  font-size: 25px;
+  color: ${(props) => props.색상};
+`; // 비슷한 형태를 가진 UI가 여러개 필요할 때 props 문법 사용
 
 function Detail(props) {
   let { id } = useParams();
@@ -11,6 +23,14 @@ function Detail(props) {
 
   return (
     <div className="container">
+      <박스>
+        <제목 className="red" /*색상="blue"*/>Detail</제목>
+      </박스>
+
+      <div className="my-alert-yellow">
+        <p>재고가 얼마 남지 않았습니다</p>
+      </div>
+
       <div className="row">
         <div className="col-md-6">
           <img
