@@ -13,11 +13,13 @@ import "./App.css";
 // import { name, name2 } from "./data.js";
 import Data from "./data.js";
 import Detail from "./Detail.js";
+import axios from "axios";
 
 import { Link, Route, Switch } from "react-router-dom";
 
 function App() {
   let [shoes, shoesChange] = useState(Data);
+  let [stock, stockChange] = useState([10, 11, 12]);
 
   return (
     <div className="App">
@@ -28,11 +30,11 @@ function App() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link>
-                <Link to="/">Home</Link>
+              <Nav.Link as={Link} to="/">
+                Home
               </Nav.Link>
-              <Nav.Link>
-                <Link to="/detail">Detail</Link>
+              <Nav.Link as={Link} to="/detail">
+                Detail
               </Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -52,8 +54,8 @@ function App() {
         </Container>
       </Navbar>
 
+      {/* Router 활용하여 페이지 나누기 */}
       <Switch>
-        {/* Router 활용하여 페이지 나누기 */}
         {/* Main page */}
         <Route exact path="/">
           {/* Jumbotron */}
@@ -112,12 +114,30 @@ function App() {
             <p>상품설명 & 가격</p>
           </div> */}
             </div>
+
+            {/* 더보기 버튼 : ajax 요청으로 가져온 데이터바인딩*/}
+            <button
+              className="btn btn-primary"
+              onClick={() => {
+                // 서버에 데이터를 보내고 싶을 때 POST 요청법
+                // axios.post('서버 url', {id: 'dy', pw: 1234});
+
+                axios
+                  .get("https://codingapple1.github.io/shop/data2.json")
+                  .then((result) => {
+                    shoesChange([...shoes, ...result.data]);
+                  })
+                  .catch();
+              }}
+            >
+              더보기
+            </button>
           </div>
         </Route>
 
         {/* Detail page */}
         <Route path="/detail/:id">
-          <Detail shoes={shoes} />
+          <Detail shoes={shoes} stock={stock} stockChange={stockChange} />
           {/* <div className="container">
             <div className="row">
               <div className="col-md-6">
@@ -137,9 +157,9 @@ function App() {
         </Route>
         <Route path="/something" component={Card}></Route>
 
-        {/* <Route path="/:id">
+        <Route path="/:id">
           <div>아무거나 적었을 때 보여주세요</div>
-        </Route> */}
+        </Route>
       </Switch>
     </div>
   );
