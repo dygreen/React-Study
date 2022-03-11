@@ -10,3 +10,5 @@
   2) Router) Link, Switch, History로 '페이지 구분' // useHistory, useParams로  '데이터바인딩'
   3) styled-components / SASS ) class없는 css 스타일링 및 css에서 여러 문법을 사용할 수 있는 SASS
   4) Lifecycle Hook / useEffect Hook : useEffect를 활용해 컴포넌트가 mount 됐을 때 알람창이 2초 후에 꺼지는 기능 구현
+  5) Ajax 요청 ( by axios.get )으로 상품 데이터 추가 '데이터바인딩'
+  6) 상위 Component의 state를 여러 하위 Component로 props 전송하기
