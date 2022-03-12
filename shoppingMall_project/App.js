@@ -20,6 +20,10 @@ import { Link, Route, Switch } from "react-router-dom";
 function App() {
   let [shoes, shoesChange] = useState(Data);
   let [stock, stockChange] = useState([10, 11, 12]);
+  let [number, numberChange] = useState(3);
+  let [btn, btnChange] = useState(true);
+  let [count, countChange] = useState(0);
+  let [fail, failChange] = useState(false);
 
   return (
     <div className="App">
@@ -116,22 +120,69 @@ function App() {
             </div>
 
             {/* 더보기 버튼 : ajax 요청으로 가져온 데이터바인딩*/}
-            <button
-              className="btn btn-primary"
-              onClick={() => {
-                // 서버에 데이터를 보내고 싶을 때 POST 요청법
-                // axios.post('서버 url', {id: 'dy', pw: 1234});
+            {btn == true ? (
+              <button
+                className="btn2 btn-primary"
+                onClick={() => {
+                  // 서버에 데이터를 보내고 싶을 때 POST 요청법
+                  // axios.post('서버 url', {id: 'dy', pw: 1234});
 
-                axios
-                  .get("https://codingapple1.github.io/shop/data2.json")
-                  .then((result) => {
-                    shoesChange([...shoes, ...result.data]);
-                  })
-                  .catch();
-              }}
-            >
-              더보기
-            </button>
+                  // Q2. 버튼을 1회 누르면 data2에 요청, 2회 누르면 data3에 요청
+                  countChange(count++);
+                  if ((count = 0)) {
+                    axios
+                      .get("https://codingapple1.github.io/shop/data2.json")
+                      .then((result) => {
+                        shoesChange([...shoes, ...result.data]); //새로운 데이터 추가
+                        // Q1. 준비한 데이터가 끝나면 버튼 숨기는 기능 (6 이상이면 버튼이 사라짐)
+                        numberChange(number + 3); // 준비한 데이터를 초기값으로 만들어주기(3)
+                        console.log({ number });
+                        if (number >= 6) {
+                          btnChange(false);
+                        }
+                      })
+                      .catch(() => {
+                        failChange(true);
+                      });
+                  } else if ((count = 1)) {
+                    axios
+                      .get("https://codingapple1.github.io/shop/data3.json")
+                      .then((result) => {
+                        shoesChange([...shoes, ...result.data]);
+                        numberChange(number + 3);
+                        console.log({ number });
+                        if (number >= 6) {
+                          btnChange(false);
+                        }
+                      })
+                      .catch(() => {
+                        failChange(true);
+                      });
+                  }
+
+                  // axios
+                  //   .get("https://codingapple1.github.io/shop/data2.json")
+                  //   .then((result) => {
+                  //     shoesChange([...shoes, ...result.data]); //새로운 데이터 추가
+                  //     // 준비한 데이터가 끝나면 버튼 숨기는 기능 (6 이상이면 버튼이 사라짐)
+                  //     numberChange(number + 3); // 준비한 데이터를 초기값으로 만들어주기(3)
+                  //     console.log({ number });
+                  //     if (number >= 6) {
+                  //       btnChange(false);
+                  //     }
+                  //   })
+                  //   .catch();
+                }}
+              >
+                더보기
+              </button>
+            ) : null}
+
+            {fail == true ? (
+              <div class="alert alert-success" role="alert">
+                서버를 불러오는데 실패하였습니다😢
+              </div>
+            ) : null}
           </div>
         </Route>
 
