@@ -1,9 +1,10 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 import "./App.css";
 import "./Detail.scss";
+import { stockcontext } from "./App.js";
 
 // styled-components
 let 박스 = styled.div`
@@ -19,6 +20,8 @@ function Detail(props) {
   // Detail 페이지 방문 후 alert창이 2초 후에 사라지는 기능
   let [alert, alertChange] = useState(true);
   let [inputData, inputDataChange] = useState("");
+  // Context
+  let stock = useContext(stockcontext);
 
   // Detail 로드시 ajax로 데이터를 가져오고 싶다면
   // useEffect(() => {
@@ -51,12 +54,12 @@ function Detail(props) {
       </박스>
 
       {/* useEffect는 업데이트될 때마다 계속 실행됨 - 직접 살펴보기 */}
-      {inputData}
+      {/* {inputData}
       <input
         onChange={(e) => {
           inputDataChange(e.target.value);
         }}
-      />
+      /> */}
 
       {alert == true ? (
         <div className="my-alert-yellow">
@@ -104,6 +107,20 @@ function Detail(props) {
           </button>
         </div>
       </div>
+
+      <Nav variant="tabs" defaultActiveKey="/home">
+        <Nav.Item>
+          <Nav.Link href="/home">Active</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-1">Option 2</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="disabled" disabled>
+            Disabled
+          </Nav.Link>
+        </Nav.Item>
+      </Nav>
     </div>
   );
 }

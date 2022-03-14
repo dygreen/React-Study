@@ -1,6 +1,6 @@
 /*eslint-disable*/
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Navbar,
   Container,
@@ -16,6 +16,9 @@ import Detail from "./Detail.js";
 import axios from "axios";
 
 import { Link, Route, Switch } from "react-router-dom";
+
+// Context
+export let stockcontext = React.createContext();
 
 function App() {
   let [shoes, shoesChange] = useState(Data);
@@ -78,12 +81,15 @@ function App() {
           <div className="container">
             <div className="row">
               {/* 반복문(Card)으로 데이터바인딩 */}
-              {shoes.map((a, i) => {
-                return <Card shoes={shoes[i]} i={i} key={i} />;
-                {
-                  /* {shoes[i]} or {a} */
-                }
-              })}
+
+              <stockcontext.Provider value={stock}>
+                {shoes.map((a, i) => {
+                  return <Card shoes={shoes[i]} i={i} key={i} />;
+                  {
+                    /* {shoes[i]} or {a} */
+                  }
+                })}
+              </stockcontext.Provider>
 
               {/* Component + props로 데이터바인딩 */}
               {/* <Card shoes={shoes[0]} />
@@ -188,8 +194,9 @@ function App() {
 
         {/* Detail page */}
         <Route path="/detail/:id">
-          <Detail shoes={shoes} stock={stock} stockChange={stockChange} />
-          {/* <div className="container">
+          <stockcontext.Provider value={stock}>
+            <Detail shoes={shoes} stock={stock} stockChange={stockChange} />
+            {/* <div className="container">
             <div className="row">
               <div className="col-md-6">
                 <img
@@ -205,6 +212,7 @@ function App() {
               </div>
             </div>
           </div> */}
+          </stockcontext.Provider>
         </Route>
         <Route path="/something" component={Card}></Route>
 
@@ -217,6 +225,9 @@ function App() {
 }
 
 function Card(props) {
+  // Context
+  let stock = useContext(stockcontext);
+
   return (
     <div className="col-md-4">
       <img
@@ -228,6 +239,7 @@ function Card(props) {
       <p>
         {props.shoes.content} & {props.shoes.price}
       </p>
+      재고: {stock[props.i]}
     </div>
   );
 }
