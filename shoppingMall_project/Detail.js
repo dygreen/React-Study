@@ -5,6 +5,8 @@ import styled from "styled-components";
 import "./App.css";
 import "./Detail.scss";
 import { stockcontext } from "./App.js";
+import { Nav } from "react-bootstrap";
+import { CSSTransition } from "react-transition-group";
 
 // styled-components
 let 박스 = styled.div`
@@ -22,6 +24,9 @@ function Detail(props) {
   let [inputData, inputDataChange] = useState("");
   // Context
   let stock = useContext(stockcontext);
+  //  Tab
+  let [tap, tapChange] = useState(0);
+  let [onOff, onOffChange] = useState(false);
 
   // Detail 로드시 ajax로 데이터를 가져오고 싶다면
   // useEffect(() => {
@@ -108,25 +113,53 @@ function Detail(props) {
         </div>
       </div>
 
-      <Nav variant="tabs" defaultActiveKey="/home">
+      {/* Tap 기능 */}
+      <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">
         <Nav.Item>
-          <Nav.Link href="/home">Active</Nav.Link>
+          <Nav.Link
+            eventKey="link-0"
+            onClick={() => {
+              onOffChange(false);
+              tapChange(0);
+            }}
+          >
+            Active
+          </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey="link-1">Option 2</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="disabled" disabled>
-            Disabled
+          <Nav.Link
+            eventKey="link-1"
+            onClick={() => {
+              onOffChange(false);
+              tapChange(1);
+            }}
+          >
+            Option 2
           </Nav.Link>
         </Nav.Item>
       </Nav>
+
+      <CSSTransition in={onOff} classNames="wow" timeout={500}>
+        <TapContent tap={tap} onOffChange={onOffChange} />
+      </CSSTransition>
     </div>
   );
 }
 
 function Info(props) {
   return <p> 재고: {props.stock[0]} </p>;
+}
+
+function TapContent(props) {
+  useEffect(() => {
+    props.onOffChange(true); /* 탭 내용 컴포넌트가 로드될 때 true */
+  });
+
+  if (props.tap === 0) {
+    return <div>0번째 내용입니다</div>;
+  } else if (props.tap === 1) {
+    return <div>1번째 내용입니다</div>;
+  }
 }
 
 export default Detail;
