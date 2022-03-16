@@ -14,6 +14,7 @@ import "./App.css";
 import Data from "./data.js";
 import Detail from "./Detail.js";
 import axios from "axios";
+import Cart from "./Cart.js";
 
 import { Link, Route, Switch } from "react-router-dom";
 
@@ -216,8 +217,12 @@ function App() {
         </Route>
         <Route path="/something" component={Card}></Route>
 
-        <Route path="/:id">
+        {/* <Route path="/:id">
           <div>아무거나 적었을 때 보여주세요</div>
+        </Route> */}
+
+        <Route path="/cart">
+          <Cart></Cart>
         </Route>
       </Switch>
     </div>

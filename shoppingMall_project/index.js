@@ -5,11 +5,22 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+let store = createStore(() => { return [{ id: 0, name: '멋진 신발', quan: 2 },
+ { id: 1, name: '검정 신발', quan: 1 },
+ { id: 2, name: '흰 신발', quan: 5 },
+ { id: 3, name: '초록 신발', quan: 7 }] 
+});
+
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Provider store={store}>
+        <App /> 
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
