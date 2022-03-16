@@ -16,6 +16,6 @@
      - 더보기 버튼을 누른 횟수에 따라 데이터 요청하는 경로를 바꾸는 기능
      - 데이터 요청에 실패했을 때 알림창UI 띄우는 
   6) 상위 Component의 state를 여러 하위 Component로 props 전송하기: 재고 상태 표시 + 주문하기 버튼을 누르면 재고가 하나 줄어듦
-     + COntext API 를 통해 state 전송하여 사용
+     + Context API 를 통해 state 전송하여 사용
   7) react-transition-group 라이브러리를 통해 Tab기능 만들기 + 애니메이션 
   8) (file: Cart.js) 'Redux'를 사용해 장바구니 Cart 페이지 
