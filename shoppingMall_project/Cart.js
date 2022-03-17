@@ -14,11 +14,14 @@ function Cart(props) {
             </tr>
             {props.state.map((a, i) => {
                 return (
-                <tr>
-                    <td>{ props.state[i].id}</td>
-                    <td>{ props.state[i].name }</td>
-                    <td>{ props.state[i].quan }</td>
-                    <td>Table cell</td>
+                <tr key={i}>
+                    <td>{ a.id }</td>
+                    <td>{ a.name }</td>
+                    <td>{ a.quan }</td>
+                    <td>
+                        <button onClick={() => { props.dispatch({ type: 'quanUp' })}}>+</button>
+                        <button onClick={() => { props.dispatch({ type: 'quanDown' })}}>-</button>
+                    </td>
                 </tr>
                 )
             })}

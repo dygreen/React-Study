@@ -8,11 +8,43 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-let store = createStore(() => { return [{ id: 0, name: '멋진 신발', quan: 2 },
- { id: 1, name: '검정 신발', quan: 1 },
- { id: 2, name: '흰 신발', quan: 5 },
- { id: 3, name: '초록 신발', quan: 7 }] 
-});
+
+// let store = createStore(() => { return [
+  //  { id: 0, name: '멋진 신발', quan: 2 },
+  //  { id: 1, name: '검정 신발', quan: 1 },
+  //  { id: 2, name: '흰 신발', quan: 5 },
+  //  { id: 3, name: '초록 신발', quan: 7 }]  
+  // });
+
+  let firstVal = [
+     { id: 0, name: '멋진 신발', quan: 2 },
+     { id: 1, name: '검정 신발', quan: 1 },
+     { id: 2, name: '흰 신발', quan: 5 },
+     { id: 3, name: '초록 신발', quan: 7 }
+    ];
+  
+// redux 수정 함수 : 수량 증가
+function reducer(state = firstVal, action) {
+    if ( action.type === 'quanUp' ) {
+      let copy = [...firstVal];
+      copy[0].quan++;
+      return copy
+    } else if ( action.type === 'quanDown' ){
+      let copy = [...firstVal];
+      if ( copy[0].quan > 0 ){
+        copy[0].quan--;
+        return copy
+      } else {
+        return copy /* 수량이 음수가 되면 감소 기능을 멈추는 조건문 */
+      }
+    } else {
+      return state;
+    }
+}//
+
+let store = createStore(reducer);
+
+
 
 
 ReactDOM.render(
