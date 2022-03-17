@@ -1,5 +1,6 @@
 # React-Study
 2022.02.28 START! ~
+
 * JSX를 이용해 HTML blog 페이지 제작, state로 버튼 기능 개발(수정/가나다순 정렬 버튼) : (folder) src
   + Component 문법 / 삼항연산자를 통한 '모달창 스위치' 기능 / map 함수를 통해 글제목 갯수에 맞게 HTML 생성 및 출력
      / props 문법(컴포넌트간 자료 전달)을 통해 '제목을 누르면 new글의 제목이 해당 제목으로 바뀌는' 기능
@@ -10,7 +11,7 @@
   2) Router) Link, Switch, History로 '페이지 구분' // useHistory, useParams로  '데이터바인딩'
   3) styled-components / SASS ) class없는 css 스타일링 및 css에서 여러 문법을 사용할 수 있는 SASS
   4) Lifecycle Hook / useEffect Hook : useEffect를 활용해 컴포넌트가 mount 됐을 때 알람창이 2초 후에 꺼지는 기능 구현
-  5) Ajax 요청 ( by axios.get )으로 상품 데이터 추가 '데이터바인딩': 
+  5) Ajax 요청 ( by axios.get )으로 상품 데이터 추가 '데이터바인딩'
      - 더보기 버튼을 누르면 추가한 상품이 보여지는 기능
      - 보여줄 상품이 끝나면 더보기 버튼 숨기는 기능
      - 더보기 버튼을 누른 횟수에 따라 데이터 요청하는 경로를 바꾸는 기능
