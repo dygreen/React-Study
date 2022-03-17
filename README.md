@@ -18,4 +18,5 @@
   6) 상위 Component의 state를 여러 하위 Component로 props 전송하기: 재고 상태 표시 + 주문하기 버튼을 누르면 재고가 하나 줄어듦
      + Context API 를 통해 state 전송하여 사용
   7) react-transition-group 라이브러리를 통해 Tab기능 만들기 + 애니메이션 
-  8) (file: Cart.js) 'Redux'를 사용해 장바구니 Cart 페이지 
+  8) (file: Cart.js) 'Redux'를 사용해 장바구니 Cart 페이지
+     + reducer/dispatch를 이용해 데이터 수정: 장바구니 속 +/- 버튼 클릭시 수량이 변경되는 
