@@ -6,7 +6,7 @@
      / input을 통해 '블로그 글발행' 기능 
 
 * (folder) shoppingMall_project
-  1️⃣ import / export를 사용해 상품 데이터 '데이터바인딩'
+  1️. import / export를 사용해 상품 데이터 '데이터바인딩'
   2. Router) Link, Switch, History로 '페이지 구분' // useHistory, useParams로  '데이터바인딩'
   3. styled-components / SASS ) class없는 css 스타일링 및 css에서 여러 문법을 사용할 수 있는 SASS
   4. Lifecycle Hook / useEffect Hook : useEffect를 활용해 컴포넌트가 mount 됐을 때 알람창이 2초 후에 꺼지는 기능 구현
