@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { combineReducers, createStore } from 'redux';
 
 
 // let store = createStore(() => { return [
@@ -16,6 +16,23 @@ import { createStore } from 'redux';
   //  { id: 3, name: '초록 신발', quan: 7 }]  
   // });
 
+
+  // Cart 페이지: alert창 초기값 저장
+  let alertFirstVal = true;
+
+
+  // alert 수정 함수
+  function reducer2(state = alertFirstVal, action) {
+    if (action.type === 'alertClose') {
+      state = false;
+      return state;
+    } else {
+      return state
+    }
+  }
+
+
+  // Cart 페이지: 장바구니 상품 초기값
   let firstVal = [
      { id: 0, name: '멋진 신발', quan: 2 },
      { id: 1, name: '검정 신발', quan: 1 },
@@ -42,7 +59,7 @@ function reducer(state = firstVal, action) {
     }
 }//
 
-let store = createStore(reducer);
+let store = createStore(combineReducers({reducer, reducer2}));
 
 
 
