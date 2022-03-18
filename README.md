@@ -20,4 +20,5 @@
      + Context API 를 통해 state 전송하여 사용
   7) react-transition-group 라이브러리를 통해 Tab기능 만들기 + 애니메이션 
   8) (file: Cart.js) 'Redux'를 사용해 장바구니 Cart 페이지
-     + reducer/dispatch를 이용해 데이터 수정: 장바구니 속 +/- 버튼 클릭시 수량이 변경되는 
+     + reducer/dispatch를 이용해 데이터 수정: 장바구니 속 +/- 버튼 클릭시 수량이 변경되는
+     + reducer를 한 개 더 추가해, state 여러개 만들 때 redux 사용법 학습 (alert창 닫기 버튼)
