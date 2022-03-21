@@ -7,6 +7,7 @@ import "./Detail.scss";
 import { stockcontext } from "./App.js";
 import { Nav } from "react-bootstrap";
 import { CSSTransition } from "react-transition-group";
+import { connect } from "react-redux";
 
 // styled-components
 let 박스 = styled.div`
@@ -93,11 +94,14 @@ function Detail(props) {
           <Info stock={props.stock} />
 
           {/* 주문하기 버튼을 누르면 재고가 1개 줄어드는 */}
+          {/* + 장바구니에 제품정보가 추가되는 */}
           <button
             className="btn btn-danger"
             id="orderBtn"
             onClick={() => {
               props.stockChange([9, 11, 12]);
+              props.dispatch({type: 'listAdd', payload: {id: 4, name: 'newItem', quan: 1}});
+              history.push('/cart');
             }}
           >
             주문하기
@@ -162,4 +166,13 @@ function TabContent(props) {
   }
 }
 
-export default Detail;
+
+function 함수명(state) { 
+  console.log(state);
+  return {
+      state : state.reducer, 
+      alert : state.reducer2 
+  }
+}
+
+export default connect(함수명)(Detail)

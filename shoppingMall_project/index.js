@@ -31,7 +31,7 @@ import { combineReducers, createStore } from 'redux';
     }
   }
 
-
+  
   // Cart 페이지: 장바구니 상품 초기값
   let firstVal = [
      { id: 0, name: '멋진 신발', quan: 2 },
@@ -42,7 +42,12 @@ import { combineReducers, createStore } from 'redux';
   
 // redux 수정 함수 : 수량 증가
 function reducer(state = firstVal, action) {
-    if ( action.type === 'quanUp' ) {
+  // detail페이지에 주문하기 버튼을 누르면 firstVal에 상품 데이터 항목 하나 추가됨
+    if ( action.type === 'listAdd') {
+      let copy = [...firstVal];
+      copy.push(action.payload);
+      return copy;
+    } else if ( action.type === 'quanUp' ) {
       let copy = [...firstVal];
       copy[0].quan++;
       return copy
