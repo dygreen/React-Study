@@ -22,4 +22,5 @@
   8) (file: Cart.js + index.js) 'Redux'를 사용해 장바구니 Cart 페이지
      + reducer/dispatch를 이용해 데이터 수정: 장바구니 속 +/- 버튼 클릭시 수량이 변경되는
      + reducer를 한 개 더 추가해, state 여러개 만들 때 redux 사용법 학습 (alert창 닫기 버튼)
-     + (+Detail.js) dispatch(playload로 데이터 보내기): 주문하기 버튼을 누르면 장바구니 상품 추가 기능 
+     + (+Detail.js) dispatch(playload로 데이터 보내기): 주문하기 버튼을 누르면 장바구니 상품 추가 기능
+  9) 메인페이지 <Card> 누르면 제품 상세페이지(/detail)로 이동
