@@ -1,18 +1,14 @@
 /*eslint-disable*/
 
-import React, { useContext, useState } from "react";
-import {
-  Navbar,
-  Container,
-  Nav,
-  NavDropdown,
-  Jumbotron,
-  Button,
-} from "react-bootstrap";
+import React, { useContext, useState, lazy, Suspense } from "react";
+import { Navbar, Container, Nav, NavDropdown, Jumbotron, Button } from "react-bootstrap";
 import "./App.css";
 // import { name, name2 } from "./data.js";
 import Data from "./data.js";
-import Detail from "./Detail.js";
+
+// import Detail from "./Detail.js";
+let Detail = lazy(() => { return import('./Detail.js')});
+
 import axios from "axios";
 import Cart from "./Cart.js";
 
@@ -196,7 +192,9 @@ function App() {
         {/* Detail page */}
         <Route path="/detail/:id">
           <stockcontext.Provider value={stock}>
+            <Suspense fallback={ <div>로딩중입니다~!</div>}>
             <Detail shoes={shoes} stock={stock} stockChange={stockChange} />
+            </Suspense>
             {/* <div className="container">
             <div className="row">
               <div className="col-md-6">

@@ -117,25 +117,18 @@ function Detail(props) {
       {/* Tab 기능 */}
       <Nav className="mt-5" variant="tabs" defaultActiveKey="link-0">
         <Nav.Item>
-          <Nav.Link
-            eventKey="link-0"
-            onClick={() => {
-              onOffChange(false);
-              tabChange(0);
-            }}
-          >
-            Active
+          <Nav.Link eventKey="link-0" onClick={() => { onOffChange(false); tabChange(0); }}>
+            Info
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link
-            eventKey="link-1"
-            onClick={() => {
-              onOffChange(false);
-              tabChange(1);
-            }}
-          >
-            Option 2
+          <Nav.Link eventKey="link-1" onClick={() => { onOffChange(false); tabChange(1); }}>
+            Shipping
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link eventKey="link-2" onClick={() => { onOffChange(false); tabChange(2); }}>
+            Refund
           </Nav.Link>
         </Nav.Item>
       </Nav>
@@ -157,11 +150,29 @@ function TabContent(props) {
   });
 
   if (props.tab === 0) {
-    return <div>0번째 내용입니다</div>;
+    return <div>상품정보 내용입니다</div>;
   } else if (props.tab === 1) {
-    return <div>1번째 내용입니다</div>;
+    return <div>배송관련 내용입니다</div>;
+  } else {
+    return <div>환불약관 내용입니다</div>;
   }
+
+  
+  // enum으로 경우에 따라 tab(상품정보/배송정보/환불약관) 내용 보여주기
+  var now = 'info';
+  return(
+    <div>
+      {
+        {
+          info : <p>상품정보</p>,
+          shipping : <p>배송관련</p>,
+          refund : <p>환불약관</p>
+        }[now]
+      }
+    </div>
+  )
 }
+
 
 
 function 함수명(state) { 
