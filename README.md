@@ -6,6 +6,8 @@
      / props 문법(컴포넌트간 자료 전달)을 통해 '제목을 누르면 new글의 제목이 해당 제목으로 바뀌는' 기능
      / input을 통해 '블로그 글발행' 기능 
 
+***
+
 * (folder) shoppingMall_project
   1) import / export를 사용해 상품 데이터 '데이터바인딩'
   2) Router) Link, Switch, History로 '페이지 구분' // useHistory, useParams로  '데이터바인딩'
@@ -24,3 +26,4 @@
      + reducer를 한 개 더 추가해, state 여러개 만들 때 redux 사용법 학습 (alert창 닫기 버튼)
      + (+Detail.js) dispatch(playload로 데이터 보내기): 주문하기 버튼을 누르면 장바구니 상품 추가 기능
   9) 메인페이지 <Card> 누르면 제품 상세페이지(/detail)로 이동
+  10) localStorage에 최근 본 상품 데이터 저장
