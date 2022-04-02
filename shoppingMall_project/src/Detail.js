@@ -47,7 +47,32 @@ function Detail(props) {
     };
   }, []); // 조건이 빈칸이면 <Detail> 등장시 한번 실행하고 끝남
 
+
+
   let { id } = useParams();
+
+
+
+  // 최근 본 상품 데이터 저장하기
+  useEffect(() => {
+    // detail 페이지 접속하면 localStorage 데이터 꺼내기 & parse
+    let arr = localStorage.getItem('watched');
+    if( arr == null ){
+      arr = []
+    } else {
+      arr = JSON.parse(arr);
+    }
+
+    // 현재 상품 번호 추가 + 중복 제거하기
+    arr.push(id);
+    arr = new Set(arr); /* Set 자료형은 어레이랑 똑같은데 중복을 자동으로 제거해줌 */
+    arr = [...arr]; /* Set으로 변환했다가 다시 []로 변환하는 코드 */
+    localStorage.setItem('watched', JSON.stringify(arr));
+  }, []);
+
+
+
+
   let findProduct = props.shoes.find((product) => {
     return product.id == id;
   });
