@@ -27,3 +27,10 @@
      + (+Detail.js) dispatch(playload로 데이터 보내기): 주문하기 버튼을 누르면 장바구니 상품 추가 기능
   9) 메인페이지 <Card> 누르면 제품 상세페이지(/detail)로 이동
   10) localStorage에 최근 본 상품 데이터 저장
+
+
+***
+### [06.28] Cat-Maker
+* HTML 파일 내에 React를 추가해 사용
+* `useState`를 사용하여 'n번째 고양이 가라사대'의 n 숫자 바꾸기
+* `.map()`을 사용하여 하단 favorite 고양이 사진 리스트 보여주기
